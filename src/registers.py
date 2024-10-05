@@ -15,6 +15,7 @@ REGISTERS = TypedRegisterRegister()
 #############################
 _chat_endpoints = Register[ChatEndpoint]({
     "gpt-4o-mini": OpenAIChatEndpoint(model="gpt-4o-mini"),
+    "o1-preview": OpenAIChatEndpoint(model="o1-preview"),
 })
 REGISTERS[ChatEndpoint] = _chat_endpoints
 
@@ -41,6 +42,7 @@ def _build_prompt(yaml_file: str) -> Prompt:
 
 
 _prompts = Register[Prompt]({
+    "find_embeddings": _build_prompt("find_embeddings.yml"),
     "chat": _build_prompt("chat.yml"),
 })
 REGISTERS[Prompt] = _prompts

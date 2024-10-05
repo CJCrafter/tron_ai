@@ -1,10 +1,7 @@
-endpoint: "o1-preview"
+endpoint: "gpt-4o-mini"
 temperature: 1.4
-error_when_missing:
-  - "name"
-  - "plugin"
-  - "embeddings"
-response_format: "json"
+error_when_missing: []
+response_format: "text"
 
 prompt_parts:
   - required_variables: []

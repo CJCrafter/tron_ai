@@ -38,4 +38,4 @@ class OpenAIChatEndpoint(ChatEndpoint):
             temperature=temperature,
             response_format={"type": response_format},
         )
-        return response.data
+        return response.choices[0].message.content

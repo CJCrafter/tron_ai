@@ -1,9 +1,8 @@
 endpoint: "o1-preview"
-temperature: 0.5
+temperature: 1.0
 error_when_missing:
-  - "name"
-  - "plugin"
   - "embeddings"
+  - "question"
 response_format: "text"
 
 prompt_parts:
@@ -33,3 +32,7 @@ prompt_parts:
       - Suggest creative solutions using the wiki information
       - Explain different config keys and values
       - Ask the user to provide more information if needed
+  - required_variables: []
+    prompt: |
+      Here is what the user is asking:
+      {question}
