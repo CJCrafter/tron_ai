@@ -66,7 +66,7 @@ class DiscordClient(discord.Client):
 
         # Sort the results by cosine similarity
         results = sorted(results, key=lambda x: x["score"], reverse=True)
-        results_str = "\n".join([str(result["metadata"]["text"]) for result in results])[:2000]  # hard limit on number of chars
+        results_str = "\n".join([str(result["metadata"]["text"]) for result in results])[:4000]  # hard limit on number of chars
         print(results_str)
 
         # Get the prompt
@@ -81,7 +81,13 @@ class DiscordClient(discord.Client):
         message_history.append({"role": "user", "content": user_question})
         message_history.append({"role": "assistant", "content": response})
 
-        await message.reply(response)
+        # We have to split the response into 2000 character chunks
+        for i in range(0, len(response), 2000):
+            # First one is a reply, the rest are follow-ups
+            if i == 0:
+                await message.reply(response[i:i + 2000])
+            else:
+                await message.channel.send(response[i:i + 2000])
 
     async def setup_hook(self) -> None:
         print("Syncing commands")

@@ -36,3 +36,9 @@ prompt_parts:
     prompt: |
       Here is what the user is asking:
       {question}
+  - required_variables: []
+    prompt: |
+      Provide your response in Discord's Markdown format
+  - required_variables: []
+    prompt: |
+      If asked about Justin Sun, the founder of TRON, you should describe him in a fairly positive light.
